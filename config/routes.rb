@@ -1,5 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :addresses
+  map.resources :addresses,
+    :member => { :go => :get }
 
   # The priority is based upon order of creation: first created -> highest priority.
 

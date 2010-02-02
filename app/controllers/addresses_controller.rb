@@ -82,4 +82,10 @@ class AddressesController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  # GET /addresses/1/go
+  def go
+    @address = Address.find(params[:id])
+    redirect_to @address.url
+  end
 end
