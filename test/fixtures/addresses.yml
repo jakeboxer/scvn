@@ -1,7 +1,5 @@
-# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+scvngr:
+  url: http://www.scvngr.com/
 
-one:
-  url: MyText
-
-two:
-  url: MyText
+jboxer:
+  url: http://www.jboxer.com/
