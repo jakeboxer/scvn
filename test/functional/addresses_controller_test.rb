@@ -42,4 +42,9 @@ class AddressesControllerTest < ActionController::TestCase
 
     assert_redirected_to addresses_path
   end
+  
+  test "should redirect to address's url" do
+    get :go, :id => addresses(:scvngr).to_param
+    assert_redirected_to addresses(:scvngr).url
+  end
 end
