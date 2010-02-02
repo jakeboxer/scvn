@@ -8,6 +8,7 @@
 <% @addresses.each do |address| %>
   <tr>
     <td><%=h address.url %></td>
+    <td><%= link_to 'Go', go_address_path(address) %>
     <td><%= link_to 'Show', address %></td>
     <td><%= link_to 'Edit', edit_address_path(address) %></td>
     <td><%= link_to 'Destroy', address, :confirm => 'Are you sure?', :method => :delete %></td>
