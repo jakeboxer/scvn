@@ -1,6 +1,5 @@
 class AddressesController < ApplicationController
-  before_filter :get_address_by_key,
-    :only => [:show, :edit, :update, :destroy, :goto]
+  before_filter :get_address, :only => [:show, :edit, :update, :destroy, :goto]
   
   # GET /addresses
   # GET /addresses.xml
@@ -87,7 +86,11 @@ class AddressesController < ApplicationController
   
   private
   
-  def get_address_by_key
-    @address = Address.find_by_key(params[:key])
+  def get_address
+    if params.include?(:id)
+      @address = Address.find(params[:id])
+    else
+      @address = Address.find_by_key(params[:key])
+    end
   end
 end
