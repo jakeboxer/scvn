@@ -16,4 +16,9 @@ class AddressTest < ActiveSupport::TestCase
     assert_equal scvngr, Address.find_by_shortened(scvngr.shortened)
     assert_equal jboxer, Address.find_by_shortened(jboxer.shortened)
   end
+  
+  test 'block blank URLs' do
+    addr = Address.new(:url => '')
+    assert !addr.save
+  end
 end
