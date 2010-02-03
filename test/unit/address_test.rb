@@ -2,9 +2,11 @@ require 'test_helper'
 
 class AddressTest < ActiveSupport::TestCase
   test "convert between numerical IDs and shortened keys" do
-    assert_equal addresses(:scvngr).key, key_to_id(addresses(:scvngr).id)
-    assert_equal addresses(:scvngr).id,  id_to_key(addresses(:scvngr).key)
-    assert_equal addresses(:jboxer).key, key_to_id(addresses(:jboxer).id)
-    assert_equal addresses(:jboxer).id,  id_to_key(addresses(:jboxer).key)
+    scvngr = addresses(:scvngr)
+    jboxer = addresses(:jboxer)
+    assert_equal scvngr.key, Address.id_to_key(scvngr.id)
+    assert_equal scvngr.id,  Address.key_to_id(scvngr.key)
+    assert_equal jboxer.key, Address.id_to_key(jboxer.id)
+    assert_equal jboxer.id,  Address.key_to_id(jboxer.key)
   end
 end
