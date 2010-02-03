@@ -83,8 +83,8 @@ class AddressesController < ApplicationController
     end
   end
   
-  # GET /addresses/1/go
-  def go
+  # GET /addresses/1/goto
+  def goto
     @address = Address.find(params[:id])
     redirect_to @address.url
   end

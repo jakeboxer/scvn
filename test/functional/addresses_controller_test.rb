@@ -44,7 +44,7 @@ class AddressesControllerTest < ActionController::TestCase
   end
   
   test "should redirect to address's url" do
-    get :go, :id => addresses(:scvngr).to_param
+    get :goto, :id => addresses(:scvngr).to_param
     assert_redirected_to addresses(:scvngr).url
   end
 end
