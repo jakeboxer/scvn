@@ -1,19 +1,19 @@
 require 'test_helper'
 
 class AddressTest < ActiveSupport::TestCase
-  test 'convert between numerical IDs and shortened keys' do
+  test 'convert between numerical and shortened IDs' do
     scvngr = addresses(:scvngr)
     jboxer = addresses(:jboxer)
-    assert_equal scvngr.key, Address.id_to_key(scvngr.id)
-    assert_equal scvngr.id,  Address.key_to_id(scvngr.key)
-    assert_equal jboxer.key, Address.id_to_key(jboxer.id)
-    assert_equal jboxer.id,  Address.key_to_id(jboxer.key)
+    assert_equal scvngr.shortened, Address.id_to_shortened(scvngr.id)
+    assert_equal scvngr.id,        Address.shortened_to_id(scvngr.shortened)
+    assert_equal jboxer.shortened, Address.id_to_shortened(jboxer.id)
+    assert_equal jboxer.id,        Address.shortened_to_id(jboxer.shortened)
   end
   
-  test 'find by key' do
+  test 'find by shortened ID' do
     scvngr = addresses(:scvngr)
     jboxer = addresses(:jboxer)
-    assert_equal scvngr, Address.find_by_key(scvngr.key)
-    assert_equal jboxer, Address.find_by_key(jboxer.key)
+    assert_equal scvngr, Address.find_by_shortened(scvngr.shortened)
+    assert_equal jboxer, Address.find_by_shortened(jboxer.shortened)
   end
 end
