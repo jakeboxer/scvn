@@ -33,7 +33,7 @@ class AddressesController < ApplicationController
     respond_to do |format|
       if @address.save
         flash[:notice] = 'Address was successfully created.'
-        format.html { redirect_to(@address) }
+        format.html { redirect_to @address }
         format.xml do
           render :xml => @address, :status => :created, :location => @address
         end
@@ -52,7 +52,7 @@ class AddressesController < ApplicationController
     respond_to do |format|
       if @address.update_attributes(params[:address])
         flash[:notice] = 'Address was successfully updated.'
-        format.html { redirect_to(@address) }
+        format.html { redirect_to @address }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

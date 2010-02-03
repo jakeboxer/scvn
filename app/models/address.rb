@@ -55,6 +55,10 @@ class Address < ActiveRecord::Base
     Address.id_to_shortened self.id
   end
   
+  def to_param
+    self.shortened
+  end
+  
   private
   
   # The ASCII codes of all the characters that are safe for URLs.
