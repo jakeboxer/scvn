@@ -16,6 +16,7 @@ input[type="text"] {
 }
 
 label {
+	display: block;
 	font-size: 140%;
 }
 
@@ -58,4 +59,24 @@ label {
 	font-size: 140%;
 	font-weight: bold;
 	padding: 16px;
+}
+
+/* Shortened Address */
+#shortened-address-container {
+	text-align: center;
+}
+
+#shortened-address-container input {
+	font-size: 160%;
+	padding: 16px;
+	text-align: center;
+	width: 468px;
+}
+
+#address-meta {
+	list-style-type: none;
+}
+
+#address-meta li {
+	margin: 0;
 }

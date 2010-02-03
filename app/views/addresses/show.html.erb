@@ -1,18 +1,25 @@
-<p>
-  <b>Url:</b>
-  <%=h @address.url %>
-</p>
-<p>
-  <b>Shortened:</b>
-  <%= text_field_tag 'shortened', goto_shortened_url(@address), :size => 40,
+<p id="shortened-address-container">
+  <%= label_tag 'Your shortened URL is' %>
+  <%= text_field_tag 'shortened', goto_shortened_url(@address), 
     :class=> 'has-autoselect' %>
 </p>
-<p>
-  <b>Edit link:</b>
-  <%= text_field_tag 'edit', edit_address_url(@address), :size => 75,
-    :class => 'has-autoselect' %>
-</p>
 
-<%= link_to 'Go', goto_address_path(@address) %> |
-<%= link_to 'Edit', edit_address_path(@address) %> |
-<%= link_to 'Back', addresses_path %>
+<ul id="address-meta">
+  <li>
+    <strong>Actual address:</strong>
+    <%=h @address.url %>
+    (<%= link_to 'edit', edit_address_path(@address) %>)
+  </li>
+  <li>
+    <strong>Tags:</strong>
+    <% if not @address.tags.empty? %>
+      <%=h @address.tag_names %>
+      (<%= link_to 'edit', edit_address_path(@address) %>)
+    <% else %>
+      none (<%= link_to 'add some', edit_address_path(@address) %>)
+    <% end %>
+    
+  </li>
+</ul>
+
+<%= link_to 'Shorten another URL?', root_path %>
