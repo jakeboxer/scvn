@@ -5,7 +5,9 @@
 
   <p>
     <%= f.label :url %><br />
-    <%= f.text_area :url, :rows => 2, :cols => 100 %>
+    <%= f.text_field :url, :size => 150,
+      :title => 'http://www.example.com/ (must include http)',
+      :class => 'has-hint' %>
   </p>
   <p>
     <%= f.submit 'Create' %>
