@@ -1,3 +1,22 @@
+# A single web address. Also includes the logic to translate between numeric IDs
+# and shortened ones.
+#
+# As a side note, our current translation scheme (which converts numeric IDs to
+# string representations of pseudo-base-70 numbers) makes it impossible for a
+# shortened URL to conflict with a real one.
+# We prefix all unshortened URLs with /unshortened. A conflict may arise if an
+# Address's ID translated to `unshortened` in our pseudo-base-70 representation.
+# However, `unshortened` is the equivalent of the following numeric value:
+#
+# 183,120,483,659,824,076,707 (or almost two-hundred quintillion)
+#
+# MySQL's largest type (unsigned BIGINT) maxes out at:
+#
+# 18,446,744,073,709,551,615 (or just under twenty quintillion)
+#
+# Thus, even if each person in the world makes 3 billion URLs, they'll fill up
+# the database range long before causing a collision.
+
 class Address < ActiveRecord::Base
   # URL regex altered slightly from
   # http://regexlib.com/REDetails.aspx?regexp_id=96
