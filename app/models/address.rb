@@ -6,6 +6,8 @@ class Address < ActiveRecord::Base
   validates_format_of :url,
     :with => /\A(http|https|ftp):\/\/[-_\w]+(\.[-_\w]+)+([-,@?^=%&:~#\/\+\w\.]*[-@?^=%&~#\/\w])?\Z/
   
+  attr_accessible :url
+  
   # All the characters that are safe for URLs
   # Derived from:
   # http://www.eskimo.com/~bloo/indexdot/html/topics/urlencoding.htm
