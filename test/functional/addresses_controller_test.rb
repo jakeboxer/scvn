@@ -8,10 +8,10 @@ class AddressesControllerTest < ActionController::TestCase
 
   test "should create address" do
     assert_difference('Address.count') do
-      post :create, :address => { }
+      post :create, :address => { :url => 'http://irrelevant.com' }
     end
 
-    assert_redirected_to address_path(assigns(:address))
+    assert_redirected_to assigns(:address)
   end
 
   test "should show address" do
@@ -25,12 +25,31 @@ class AddressesControllerTest < ActionController::TestCase
   end
 
   test "should update address" do
-    put :update, :id  => addresses(:scvngr).shortened, :address => { }
-    assert_redirected_to address_path(assigns(:address))
+    put :update, :id  => addresses(:scvngr).shortened,
+      :address => { :url => 'http://irrelevant.com' }
+    assert_redirected_to assigns(:address)
   end
   
   test "should redirect to address's url" do
     get :goto, :id => addresses(:scvngr).shortened
     assert_redirected_to addresses(:scvngr).url
+  end
+  
+  test "should create address with two new tags" do
+    assert_difference 'Tag.count', 2 do
+      post :create, :address => { :url => 'http://irrelevant.com',
+        :tag_names => 'irrel, evant'}
+    end
+    
+    assert_redirected_to assigns(:address)
+  end
+  
+  test "should create address with weirdly formatted tag names" do
+    assert_difference 'Tag.count', 5 do
+      post :create, :address => { :url => 'http://irrelevant.com',
+        :tag_names => 'irr=l  , 3vant,g<nd>lf,   b\'lr"g   ,kh@z@d-d**m'}
+    end
+    
+    assert_redirected_to assigns(:address)
   end
 end
