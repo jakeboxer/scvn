@@ -18,6 +18,9 @@
 # the database range long before causing a collision.
 
 class Address < ActiveRecord::Base
+  has_many :taggings, :dependent => :destroy
+  has_many :tags, :through => :taggings
+  
   # URL regex altered slightly from
   # http://regexlib.com/REDetails.aspx?regexp_id=96
   # Note: This is not intended to block every possible invalid URL; just grossly
