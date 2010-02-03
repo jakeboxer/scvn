@@ -18,9 +18,11 @@
 # the database range long before causing a collision.
 
 class Address < ActiveRecord::Base
+  # Associatons
   has_many :taggings, :dependent => :destroy
   has_many :tags, :through => :taggings
   
+  # Validations
   # URL regex altered slightly from
   # http://regexlib.com/REDetails.aspx?regexp_id=96
   # Note: This is not intended to block every possible invalid URL; just grossly
@@ -28,7 +30,12 @@ class Address < ActiveRecord::Base
   validates_format_of :url,
     :with => /\A(http|https|ftp):\/\/[-_\w]+(\.[-_\w]+)+([-,@?^=%&:~#\/\+\w\.]*[-@?^=%&~#\/\w])?\Z/
   
-  attr_accessible :url
+  # Callbacks
+  after_save :assign_tags
+  
+  # Attributes
+  attr_accessor :tag_names
+  attr_accessible :url, :tag_names
   
   # All the characters that are safe for URLs
   # Derived from:
@@ -106,4 +113,15 @@ class Address < ActiveRecord::Base
     char_values
   end
   
+  # Convert a string of comma-and-whitespace-separated words into tags (creating
+  # any that don't already exist)
+  def assign_tags
+    if @tag_names
+      # Split our tag name string on commas surrounded by any amount of
+      # whitespace
+      self.tags = @tag_names.split(/\s*,\s*/).map do |name|
+        Tag.find_or_create_by_name(name)
+      end
+    end
+  end
 end
