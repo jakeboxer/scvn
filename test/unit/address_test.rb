@@ -42,19 +42,21 @@ class AddressTest < ActiveSupport::TestCase
   test 'update tags with normal names' do
     tags = 'irr, el, evant'
     addr = Address.create(:url => 'http://irrelevant.com', :tag_names => tags)
-    assert addr.tags.exists?(Tag.find_by_name('irr'))
-    assert addr.tags.exists?(Tag.find_by_name('el'))
-    assert addr.tags.exists?(Tag.find_by_name('evant'))
-    assert !addr.tags.exists?(tags(:blog))
+    
+    assert       addr.tags.exists?(Tag.find_by_name('irr'))
+    assert       addr.tags.exists?(Tag.find_by_name('el'))
+    assert       addr.tags.exists?(Tag.find_by_name('evant'))
+    assert_equal 3, addr.tags.size
   end
   
   test 'update tags with weird names and whitespace' do
     tags = '1%#  ,  $\',ev@n"   ,,ly'
     addr = Address.create(:url => 'http://irrelevant.com', :tag_names => tags)
-    assert addr.tags.exists?(Tag.find_by_name('1%#'))
-    assert addr.tags.exists?(Tag.find_by_name('$\''))
-    assert addr.tags.exists?(Tag.find_by_name('ev@n"'))
-    assert addr.tags.exists?(Tag.find_by_name('ly'))
-    assert !addr.tags.exists?(tags(:blog))
+    
+    assert       addr.tags.exists?(Tag.find_by_name('1%#'))
+    assert       addr.tags.exists?(Tag.find_by_name('$\''))
+    assert       addr.tags.exists?(Tag.find_by_name('ev@n"'))
+    assert       addr.tags.exists?(Tag.find_by_name('ly'))
+    assert_equal 4, addr.tags.size
   end
 end

@@ -122,10 +122,10 @@ class Address < ActiveRecord::Base
   def assign_tags
     if @tag_names
       # Split our tag name string on commas surrounded by any amount of
-      # whitespace
-      self.tags = @tag_names.split(/\s*,\s*/).map do |name|
-        Tag.find_or_create_by_name(name)
-      end
+      # whitespace and eliminate any tags that are either empty or made up 
+      # entirely of whitespace
+      cleaned   = @tag_names.split(/\s*,\s*/).select {|name| name =~ /[^\s]/ }
+      self.tags = cleaned.collect {|name| Tag.find_or_create_by_name(name) }
     end
   end
 end
