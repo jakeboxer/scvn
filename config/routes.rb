@@ -40,13 +40,10 @@ ActionController::Routing::Routes.draw do |map|
   # map.root :controller => "welcome"
   map.root :controller => :addresses, :action => :new
   
-  map.goto ':id', :controller => :addresses, :action => :goto
+  map.goto_shortened ':id', :controller => :addresses, :action => :goto
   # See how all your routes lay out with "rake routes"
 
   # Install the default routes as the lowest priority.
   # Note: These default routes make all actions in every controller accessible via GET requests. You should
   # consider removing or commenting them out if you're using named routes and resources.
-  map.connect ':id/:action', :controller => :addresses
-  map.connect ':controller/:action/:id'
-  map.connect ':controller/:action/:id.:format'
 end
