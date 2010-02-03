@@ -3,3 +3,7 @@ body {
 	color: #000;
   font-size: medium;
 }
+
+.show-hint {
+	color: #aaa;
+}
