@@ -1,9 +1,28 @@
 body {
   font-family: Calibri, Helvetica, Arial, sans-serif;
-	color: #000;
+	background-color: #000;
+	color: #fff;
   font-size: medium;
 }
 
+/* Global classes and styles */
+
 .show-hint {
 	color: #aaa;
+}
+
+input {
+	background-color: #333;
+	border: 0;
+	color: #fff;
+}
+
+/* Structure */
+
+#logo a {
+	display: block;
+	width: 206px;
+	height: 56px;
+	text-indent: -9000px;
+	background: transparent url(../images/logo.jpg) 0 0 no-repeat;
 }

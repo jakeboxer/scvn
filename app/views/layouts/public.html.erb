@@ -10,6 +10,12 @@
 </head>
 <body id="<%= request.path_parameters['controller'] %>">
 <div class="container_16">
+  <div class="grid_16" id="header">
+    <div class="grid_4 alpha" id="logo">
+      <%= link_to 'scvn.gr', root_path %>
+    </div>
+  </div>
+  
   <%= yield %>
 </div>
 </body>
