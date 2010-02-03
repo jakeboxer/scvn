@@ -1,4 +1,5 @@
 class Address < ActiveRecord::Base
+  validates_presence_of :url
   
   # All the characters that are safe for URLs
   # Derived from:
