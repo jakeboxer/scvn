@@ -36,10 +36,10 @@ class AddressRoutesTest < ActionController::IntegrationTest
   end
   
   test "POST /unshortened/addresses" do
-    cond = { :url => 'http://www.realultimatepower.net/index4.htm' }
+    cond = { :url => 'http://irrelevant.com' }
     assert_difference 'Address.count(:conditions => cond)', 1 do
       post "/unshortened/addresses",
-        :address => { :url => 'http://www.realultimatepower.net/index4.htm' }
+        :address => { :url => 'http://irrelevant.com' }
     end
     
     assert_redirected_to assigns(:address)
