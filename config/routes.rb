@@ -1,5 +1,5 @@
 ActionController::Routing::Routes.draw do |map|
-  # Prefix all the unshortened urls with /o
+  # Prefix all the unshortened urls with /unshortened
   map.with_options :path_prefix => :unshortened do |unshortened|
     unshortened.resources :addresses, :member => { :goto => :get }
   end
