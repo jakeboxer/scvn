@@ -21,23 +21,23 @@ class AddressesControllerTest < ActionController::TestCase
   end
 
   test "should show address" do
-    get :show, :id => addresses(:scvngr).to_param
+    get :show, :key => addresses(:scvngr).key
     assert_response :success
   end
 
   test "should get edit" do
-    get :edit, :id => addresses(:scvngr).to_param
+    get :edit, :key => addresses(:scvngr).key
     assert_response :success
   end
 
   test "should update address" do
-    put :update, :id => addresses(:scvngr).to_param, :address => { }
+    put :update, :key => addresses(:scvngr).key, :address => { }
     assert_redirected_to address_path(assigns(:address))
   end
 
   test "should destroy address" do
     assert_difference('Address.count', -1) do
-      delete :destroy, :id => addresses(:scvngr).to_param
+      delete :destroy, :key => addresses(:scvngr).key
     end
 
     assert_redirected_to addresses_path
