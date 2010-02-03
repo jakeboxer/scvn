@@ -34,10 +34,14 @@ class AddressesController < ApplicationController
       if @address.save
         flash[:notice] = 'Address was successfully created.'
         format.html { redirect_to(@address) }
-        format.xml  { render :xml => @address, :status => :created, :location => @address }
+        format.xml do
+          render :xml => @address, :status => :created, :location => @address
+        end
       else
         format.html { render :action => "new" }
-        format.xml  { render :xml => @address.errors, :status => :unprocessable_entity }
+        format.xml do
+          render :xml => @address.errors, :status => :unprocessable_entity
+        end
       end
     end
   end
@@ -52,7 +56,9 @@ class AddressesController < ApplicationController
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
-        format.xml  { render :xml => @address.errors, :status => :unprocessable_entity }
+        format.xml do
+          render :xml => @address.errors, :status => :unprocessable_entity
+        end
       end
     end
   end
