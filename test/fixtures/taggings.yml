@@ -1,9 +1,15 @@
-# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+scvngr_tech:
+  address: scvngr
+  tag: tech
 
-one:
-  address_id: 1
-  tag_id: 1
+scvngr_location:
+  address: scvngr
+  tag: location
 
-two:
-  address_id: 1
-  tag_id: 1
+jboxer_tech:
+  address: jboxer
+  tag: tech
+
+jboxer_blog:
+  address: jboxer
+  tag: blog

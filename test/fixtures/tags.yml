@@ -1,7 +1,8 @@
-# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+location:
+  name: location-aware
 
-one:
-  name: MyString
+tech:
+  name: technology
 
-two:
-  name: MyString
+blog:
+  name: blog

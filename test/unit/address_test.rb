@@ -26,4 +26,16 @@ class AddressTest < ActiveSupport::TestCase
     addr = Address.new(:url => 'scvngr')
     assert !addr.save
   end
+  
+  test 'addresses have tags' do
+    # SCVNGR
+    assert addresses(:scvngr).tags.exists?(tags(:tech))
+    assert addresses(:scvngr).tags.exists?(tags(:location))
+    assert !addresses(:scvngr).tags.exists?(tags(:blog))
+    
+    # jBoxer
+    assert addresses(:jboxer).tags.exists?(tags(:tech))
+    assert !addresses(:jboxer).tags.exists?(tags(:location))
+    assert addresses(:jboxer).tags.exists?(tags(:blog))
+  end
 end
