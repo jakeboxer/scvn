@@ -2,13 +2,9 @@
 
 <% form_for(@address) do |f| %>
   <%= f.error_messages %>
-
-  <p>
-    <%= f.label :url %><br />
-    <%= f.text_field :url, :size => 150,
-      :title => 'http://www.example.com/ (must include http)',
-      :class => 'has-hint' %>
-  </p>
+  
+  <%= render :partial => 'form', :object => f %>
+  
   <p>
     <%= f.submit 'Create' %>
   </p>
