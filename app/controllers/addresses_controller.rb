@@ -1,4 +1,7 @@
 class AddressesController < ApplicationController
+  before_filter :get_address_by_key,
+    :only => [:show, :edit, :update, :destroy, :goto]
+  
   # GET /addresses
   # GET /addresses.xml
   def index
@@ -13,8 +16,6 @@ class AddressesController < ApplicationController
   # GET /addresses/1
   # GET /addresses/1.xml
   def show
-    @address = Address.find_by_key(params[:key])
-
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @address }
@@ -34,7 +35,6 @@ class AddressesController < ApplicationController
 
   # GET /addresses/1/edit
   def edit
-    @address = Address.find_by_key(params[:key])
   end
 
   # POST /addresses
@@ -57,8 +57,6 @@ class AddressesController < ApplicationController
   # PUT /addresses/1
   # PUT /addresses/1.xml
   def update
-    @address = Address.find_by_key(params[:key])
-
     respond_to do |format|
       if @address.update_attributes(params[:address])
         flash[:notice] = 'Address was successfully updated.'
@@ -74,7 +72,6 @@ class AddressesController < ApplicationController
   # DELETE /addresses/1
   # DELETE /addresses/1.xml
   def destroy
-    @address = Address.find_by_key(params[:key])
     @address.destroy
 
     respond_to do |format|
@@ -85,7 +82,12 @@ class AddressesController < ApplicationController
   
   # GET /addresses/1/goto
   def goto
-    @address = Address.find_by_key(params[:key])
     redirect_to @address.url
+  end
+  
+  private
+  
+  def get_address_by_key
+    @address = Address.find_by_key(params[:key])
   end
 end
