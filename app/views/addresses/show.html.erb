@@ -4,11 +4,13 @@
 </p>
 <p>
   <b>Shortened:</b>
-  <%= text_field_tag 'shortened', goto_shortened_url(@address), :size => 40 %>
+  <%= text_field_tag 'shortened', goto_shortened_url(@address), :size => 40,
+    :class=> 'has-autoselect' %>
 </p>
 <p>
   <b>Edit link:</b>
-  <%= text_field_tag 'edit', edit_address_url(@address), :size => 75 %>
+  <%= text_field_tag 'edit', edit_address_url(@address), :size => 75,
+    :class => 'has-autoselect' %>
 </p>
 
 <%= link_to 'Go', goto_address_path(@address) %> |

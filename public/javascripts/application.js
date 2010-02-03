@@ -44,6 +44,13 @@ function setupHints (hasHintClass, showHintClass) {
 	});
 }
 
+function setupAutoSelect (autoSelectClass) {
+	$('.' + autoSelectClass).click(function () {
+		$(this).select();
+	});
+}
+
 $(document).ready(function () {
 	setupHints('has-hint', 'show-hint');
+	setupAutoSelect('has-autoselect');
 });
