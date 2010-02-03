@@ -46,6 +46,10 @@ class Address < ActiveRecord::Base
     id
   end
   
+  def self.find_by_key (key)
+    Address.find(Address.key_to_id(key))
+  end
+  
   def key
     Address.id_to_key self.id
   end
