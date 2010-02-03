@@ -1,10 +1,12 @@
 <p>
-  <%= form.label :url %><br />
-  <%= form.text_field :url, :size => 150,
-    :title => 'http://www.example.com/ (must include http)',
+  <%= form.label :url, 'URL to shorten', :id => :address_url_label %><br />
+  <%= form.text_field :url,
+    :title => 'http://www.example.com/ (must include http://)',
     :class => 'has-hint' %>
 </p>
 <p>
-  <%= form.label :tag_names %><br />
-  <%= form.text_field :tag_names %>
+  <%= form.label :tag_names, 'Tags (optional, comma-separated)' %><br />
+  <%= form.text_field :tag_names,
+    :title => 'ex. spiders, payment, email attachments',
+    :class => 'has-hint' %>
 </p>

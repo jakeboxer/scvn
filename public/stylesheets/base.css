@@ -1,23 +1,30 @@
 body {
   font-family: Calibri, Helvetica, Arial, sans-serif;
-	background-color: #000;
-	color: #fff;
+	background: #fff url(../images/bg.gif) 0 0 repeat-x;
+	color: #000;
   font-size: medium;
 }
 
 /* Global classes and styles */
 
 .show-hint {
-	color: #aaa;
+	color: #666;
 }
 
-input {
-	background-color: #333;
-	border: 0;
-	color: #fff;
+input[type="text"] {
+	border: 2px solid #999;
+}
+
+label {
+	font-size: 140%;
 }
 
 /* Structure */
+
+#header {
+	margin-top: 32px;
+	margin-bottom: 64px;
+}
 
 #logo a {
 	display: block;
@@ -25,4 +32,30 @@ input {
 	height: 56px;
 	text-indent: -9000px;
 	background: transparent url(../images/logo.jpg) 0 0 no-repeat;
+}
+
+/* New Address */
+#new_address input[type="text"] {
+	width: 920px;
+}
+
+#new_address #address_url {
+	font-size: 120%;
+	padding: 8px;
+}
+
+#new_address #address_url_label {
+	font-size: 160%;
+	font-weight: bold;
+}
+
+#new_address #address_tag_names {
+	font-size: 90%;
+	padding: 8px;
+}
+
+#new_address #address_submit {
+	font-size: 140%;
+	font-weight: bold;
+	padding: 16px;
 }
