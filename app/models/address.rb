@@ -1,6 +1,4 @@
 class Address < ActiveRecord::Base
-  validates_presence_of :url
-  
   # URL regex altered slightly from
   # http://regexlib.com/REDetails.aspx?regexp_id=96
   # Note: This is not intended to block every possible invalid URL; just grossly
