@@ -9,10 +9,10 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100202232404) do
+ActiveRecord::Schema.define(:version => 20100203175226) do
 
   create_table "addresses", :force => true do |t|
-    t.text     "url"
+    t.text     "url",        :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
