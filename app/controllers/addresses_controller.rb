@@ -1,16 +1,5 @@
 class AddressesController < ApplicationController
   before_filter :get_address, :only => [:show, :edit, :update, :destroy, :goto]
-  
-  # GET /addresses
-  # GET /addresses.xml
-  def index
-    @addresses = Address.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @addresses }
-    end
-  end
 
   # GET /addresses/1
   # GET /addresses/1.xml
