@@ -28,14 +28,6 @@ class AddressesControllerTest < ActionController::TestCase
     put :update, :id  => addresses(:scvngr).shortened, :address => { }
     assert_redirected_to address_path(assigns(:address))
   end
-
-  test "should destroy address" do
-    assert_difference('Address.count', -1) do
-      delete :destroy, :id => addresses(:scvngr).shortened
-    end
-
-    assert_redirected_to addresses_path
-  end
   
   test "should redirect to address's url" do
     get :goto, :id => addresses(:scvngr).shortened

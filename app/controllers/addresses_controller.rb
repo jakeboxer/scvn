@@ -56,17 +56,6 @@ class AddressesController < ApplicationController
       end
     end
   end
-
-  # DELETE /addresses/1
-  # DELETE /addresses/1.xml
-  def destroy
-    @address.destroy
-
-    respond_to do |format|
-      format.html { redirect_to(addresses_url) }
-      format.xml  { head :ok }
-    end
-  end
   
   # GET /addresses/1/goto
   def goto
