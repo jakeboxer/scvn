@@ -44,7 +44,7 @@ ActionController::Routing::Routes.draw do |map|
   # Note: These default routes make all actions in every controller accessible via GET requests. You should
   # consider removing or commenting them out if you're using named routes and resources.
   map.connect ':key', :controller => :addresses, :action => :goto
-  map.connect ':id/:action', :controller => :addresses
+  map.connect ':key/:action', :controller => :addresses
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
 end
