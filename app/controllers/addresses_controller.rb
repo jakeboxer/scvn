@@ -76,10 +76,6 @@ class AddressesController < ApplicationController
   private
   
   def get_address
-    if params.include?(:id)
-      @address = Address.find(params[:id])
-    else
-      @address = Address.find_by_key(params[:key])
-    end
+    @address = Address.find_by_shortened(params[:id])
   end
 end
