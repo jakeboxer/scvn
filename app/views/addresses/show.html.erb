@@ -2,6 +2,10 @@
   <b>Url:</b>
   <%=h @address.url %>
 </p>
+<p>
+  <b>Shortened:</b>
+  <%= text_field_tag 'shortened', goto_url(@address.key), :size => 40 %>
+</p>
 
 <%= link_to 'Go', goto_address_path(@address) %> |
 <%= link_to 'Edit', edit_address_path(@address) %> |
