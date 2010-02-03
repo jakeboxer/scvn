@@ -13,7 +13,7 @@ class AddressesController < ApplicationController
   # GET /addresses/1
   # GET /addresses/1.xml
   def show
-    @address = Address.find(params[:id])
+    @address = Address.find_by_key(params[:key])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -34,7 +34,7 @@ class AddressesController < ApplicationController
 
   # GET /addresses/1/edit
   def edit
-    @address = Address.find(params[:id])
+    @address = Address.find_by_key(params[:key])
   end
 
   # POST /addresses
@@ -57,7 +57,7 @@ class AddressesController < ApplicationController
   # PUT /addresses/1
   # PUT /addresses/1.xml
   def update
-    @address = Address.find(params[:id])
+    @address = Address.find_by_key(params[:key])
 
     respond_to do |format|
       if @address.update_attributes(params[:address])
@@ -74,7 +74,7 @@ class AddressesController < ApplicationController
   # DELETE /addresses/1
   # DELETE /addresses/1.xml
   def destroy
-    @address = Address.find(params[:id])
+    @address = Address.find_by_key(params[:key])
     @address.destroy
 
     respond_to do |format|
