@@ -1,7 +1,9 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :addresses,
-    :member => { :go => :get }
-
+  # Prefix all the unshortened urls with /o
+  map.with_options :path_prefix => :o do |unshortened|
+    unshortened.resources :addresses, :member => { :go => :get }
+  end
+  
   # The priority is based upon order of creation: first created -> highest priority.
 
   # Sample of regular route:
@@ -41,6 +43,8 @@ ActionController::Routing::Routes.draw do |map|
   # Install the default routes as the lowest priority.
   # Note: These default routes make all actions in every controller accessible via GET requests. You should
   # consider removing or commenting them out if you're using named routes and resources.
+  map.connect ':id', :controller => :addresses, :action => :go
+  map.connect ':id/:action', :controller => :addresses
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
 end
