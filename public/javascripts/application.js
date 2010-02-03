@@ -44,6 +44,8 @@ function setupHints (hasHintClass, showHintClass) {
 	});
 }
 
+// Automatically select all the text in elements of the specified class when
+// clicked.
 function setupAutoSelect (autoSelectClass) {
 	$('.' + autoSelectClass).click(function () {
 		$(this).select();
