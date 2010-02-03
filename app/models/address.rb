@@ -34,8 +34,12 @@ class Address < ActiveRecord::Base
   after_save :assign_tags
   
   # Attributes
-  attr_accessor :tag_names
+  attr_writer :tag_names
   attr_accessible :url, :tag_names
+  
+  def tag_names
+    @tag_names || tags.map(&:name).join(', ')
+  end
   
   # All the characters that are safe for URLs
   # Derived from:
