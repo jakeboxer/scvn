@@ -1,5 +1,5 @@
 class AddressesController < ApplicationController
-  before_filter :get_address, :only => [:show, :edit, :update, :destroy, :goto]
+  before_filter :get_address, :only => [:show, :edit, :update, :goto]
 
   # GET /addresses/1
   # GET /addresses/1.xml
