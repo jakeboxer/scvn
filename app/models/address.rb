@@ -17,41 +17,42 @@ class Address < ActiveRecord::Base
   # base-X number (where X is the number of URL-safe characters).
   # Note: This is not a traditional base-X number; rather than starting with 0,
   # it starts with the first URL-safe character.
-  def self.id_to_key (id)
-    safe_chars = Address.url_safe_chars
-    key_chars  = []
+  def self.id_to_shortened (id)
+    safe_chars      = Address.url_safe_chars
+    shortened_chars = []
     
     # Run through the id, converting to base-X digits and then shifting
     while id > 0
-      key_chars.unshift(safe_chars[(id % safe_chars.length)])
+      shortened_chars.unshift(safe_chars[(id % safe_chars.length)])
       id /= safe_chars.length
     end
     
-    key_chars.join('')
+    shortened_chars.join('')
   end
   
   # Converts a string representation of a base-X number (as described in
-  # id_to_key) to the equivalent numerical value.
-  def self.key_to_id (key)
-    safe_char_vals = Address.url_safe_char_values
-    key_chars      = key.split('')
-    id             = 0
+  # id_to_shortened) to the equivalent numerical value.
+  def self.shortened_to_id (shortened)
+    safe_char_vals  = Address.url_safe_char_values
+    shortened_chars = shortened.split('')
+    id              = 0
     
-    # Run through the key, converting from base-X digits to numerical values
-    while not key_chars.empty?
+    # Run through the shortened id, converting from base-X digits to numerical
+    # values
+    while not shortened_chars.empty?
       id *= safe_char_vals.length
-      id += safe_char_vals[key_chars.shift]
+      id += safe_char_vals[shortened_chars.shift]
     end
     
     id
   end
   
-  def self.find_by_key (key)
-    Address.find(Address.key_to_id(key))
+  def self.find_by_shortened (shortened)
+    Address.find(Address.shortened_to_id(shortened))
   end
   
-  def key
-    Address.id_to_key self.id
+  def shortened
+    Address.id_to_shortened self.id
   end
   
   private
