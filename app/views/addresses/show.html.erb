@@ -4,7 +4,7 @@
 </p>
 <p>
   <b>Shortened:</b>
-  <%= text_field_tag 'shortened', goto_url(@address.key), :size => 40 %>
+  <%= text_field_tag 'shortened', goto_url(@address.shortened), :size => 40 %>
 </p>
 
 <%= link_to 'Go', goto_address_path(@address) %> |
