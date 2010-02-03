@@ -21,4 +21,9 @@ class AddressTest < ActiveSupport::TestCase
     addr = Address.new(:url => '')
     assert !addr.save
   end
+  
+  test 'block invalid URLs' do
+    addr = Address.new(:url => 'scvngr')
+    assert !addr.save
+  end
 end
