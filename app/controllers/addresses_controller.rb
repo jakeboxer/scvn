@@ -85,7 +85,7 @@ class AddressesController < ApplicationController
   
   # GET /addresses/1/goto
   def goto
-    @address = Address.find(params[:id])
+    @address = Address.find_by_key(params[:key])
     redirect_to @address.url
   end
 end
