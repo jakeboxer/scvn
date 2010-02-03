@@ -1,6 +1,13 @@
 class Address < ActiveRecord::Base
   validates_presence_of :url
   
+  # URL regex altered slightly from
+  # http://regexlib.com/REDetails.aspx?regexp_id=96
+  # Note: This is not intended to block every possible invalid URL; just grossly
+  # invalid ones.
+  validates_format_of :url,
+    :with => /\A(http|https|ftp):\/\/[-_\w]+(\.[-_\w]+)+([-,@?^=%&:~#\/\+\w\.]*[-@?^=%&~#\/\w])?\Z/
+  
   # All the characters that are safe for URLs
   # Derived from:
   # http://www.eskimo.com/~bloo/indexdot/html/topics/urlencoding.htm
