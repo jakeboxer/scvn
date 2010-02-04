@@ -69,4 +69,9 @@ class AddressTest < ActiveSupport::TestCase
     assert       addr.tags.exists?(Tag.find_by_name('evant'))
     assert_equal 3, addr.tags.size
   end
+  
+  test 'number of visits' do
+    assert_equals 4, addresses(:scvngr).num_visits
+    assert_equals 2, addresses(:jboxer).num_visits
+  end
 end

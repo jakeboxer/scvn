@@ -21,6 +21,7 @@ class Address < ActiveRecord::Base
   # Associatons
   has_many :taggings, :dependent => :destroy
   has_many :tags, :through => :taggings
+  has_many :visits, :dependent => :destroy
   
   # Validations
   # URL regex altered slightly from
@@ -44,6 +45,11 @@ class Address < ActiveRecord::Base
   
   def tag_names
     @tag_names || tags.map(&:name).join(', ')
+  end
+  
+  # The number of times the site has been visited through the shortened URL
+  def num_visits
+    self.visits.size
   end
   
   # All the characters that are safe for URLs

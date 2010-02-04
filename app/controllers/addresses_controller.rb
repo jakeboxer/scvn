@@ -65,6 +65,7 @@ class AddressesController < ApplicationController
   
   # GET /addresses/1/goto
   def goto
+    @address.visits.create
     redirect_to @address.url
   end
   
