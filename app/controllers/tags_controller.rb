@@ -12,6 +12,18 @@ class TagsController < ApplicationController
     @tag = Tag.find(params[:id])
   end
   
+  def find
+    @tag = Tag.find_by_name(params[:name])
+    
+    respond_to do |format|
+      if @tag.nil?
+        format.html
+      else
+        format.html { redirect_to @tag }
+      end
+    end
+  end
+  
   def namesearch
     @tags = Tag.all(
       :conditions => ["name LIKE ?", "%#{params[:q]}%"],

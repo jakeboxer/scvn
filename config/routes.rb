@@ -4,7 +4,7 @@ ActionController::Routing::Routes.draw do |map|
     unshortened.resources :addresses, :member => { :goto => :get }
     unshortened.resources :tags,
       :only => [:index, :show],
-      :collection => { :namesearch => :get }
+      :collection => { :namesearch => :get, :find => :get }
   end
   
   # The priority is based upon order of creation: first created -> highest priority.
