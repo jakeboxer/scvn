@@ -74,7 +74,10 @@ class Address < ActiveRecord::Base
     safe_chars      = Address.url_safe_chars
     shortened_chars = []
     
-    # Run through the id, converting to base-X digits and then shifting
+    # Run through the id, shifting off quantities that can fit in a base-X
+    # digit, converting those quantities to our pseudo-base-X representation,
+    # and tacking each new pseudo-base-X digit onto our under-construction
+    # shortened id. Repeat until the base-X representation is complete.
     while id > 0
       shortened_chars.unshift(safe_chars[(id % safe_chars.length)])
       id /= safe_chars.length
@@ -91,7 +94,8 @@ class Address < ActiveRecord::Base
     id              = 0
     
     # Run through the shortened id, converting from base-X digits to numerical
-    # values
+    # values, and shifting them into our under-construction numerical id. Repeat
+    # until the numerical id is complete.
     while not shortened_chars.empty?
       id *= safe_char_vals.length
       id += safe_char_vals[shortened_chars.shift]
