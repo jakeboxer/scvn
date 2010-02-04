@@ -26,6 +26,11 @@ Setup
 
 4. In a browser, navigate to http://localhost:3000/ to begin.
 
+5. (optional) If you want to run the unit/functional/integration tests, you'll
+   need to create another MySQL database called scvn_test (or mess around with
+   /config/database.yml of course). Then, from the root of the Rails app, run
+   `rake test`.
+
 Abstract Design
 ===============
 Though we're used to representing numbers in base-10, a numerical value can be represented in any base. Furthermore, the actual characters used to represent numbers are arbitrary. In hexadecimal, we use 'a' or 'A' to represent what would be '10' in decimal. It's equally reasonable to represent single base-10 digits (0-9) as other characters. As long as all involved parties are competent and aware, any representation will do.
