@@ -25,6 +25,21 @@ label {
 	font-size: 85%;
 }
 
+/* Rails errors */
+#errorExplanation {
+	background-color: #fbb;
+	padding: 16px 24px;
+}
+
+#errorExplanation ul {
+	list-style-type: none;
+	margin-bottom: 0;
+}
+
+#errorExplanation li {
+	margin: 0;
+}
+
 /* Structure */
 
 #header {
