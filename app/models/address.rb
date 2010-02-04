@@ -100,14 +100,17 @@ class Address < ActiveRecord::Base
     id
   end
   
+  # Finds the URL with the specified shortened id
   def self.find_by_shortened (shortened)
     Address.find(Address.shortened_to_id(shortened))
   end
   
+  # The shortened id of the Address
   def shortened
     Address.id_to_shortened self.id
   end
   
+  # Always use the shortened id instead of the regular one for parameters
   def to_param
     self.shortened
   end
