@@ -1,14 +1,3 @@
-== scvn.gr-specific instructions
-* Tested on Ruby 1.9.1 with Ruby on Rails 2.3.3. May work with other versions,
-  but no guarantees.
-* Requires no external gems (aside from mysql).
-* Requires an internet connection for downloading Google's copy of jQuery.
-* Requires MySQL to be installed. Expects the following settings:
-  - db name: scvn_dev
-  - host: localhost
-  If you'd like to use different settings, or you're using a username and
-  password, you'll need to go into /config/database.yml and change the settings
-
 == Welcome to Rails
 
 Rails is a web-application framework that includes everything needed to create 
