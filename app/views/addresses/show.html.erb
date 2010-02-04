@@ -1,7 +1,8 @@
 <p id="shortened-address-container">
   <%= label_tag 'Your shortened URL is' %>
   <%= text_field_tag 'shortened', goto_shortened_url(@address), 
-    :class => 'has-autoselect' %>
+    :class => 'has-autoselect' %><br />
+  <span class="mute">Click the shortened url and hit CTRL-C (Windows/Linux) or Command-C (Mac) to copy it to the clipboard.</span>
 </p>
 
 <ul id="address-meta">

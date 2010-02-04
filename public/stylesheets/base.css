@@ -20,6 +20,11 @@ label {
 	font-size: 140%;
 }
 
+.mute {
+	color: #666;
+	font-size: 85%;
+}
+
 /* Structure */
 
 #header {
@@ -80,6 +85,7 @@ label {
 	padding: 16px;
 	text-align: center;
 	width: 468px;
+	margin-bottom: 8px;
 }
 
 #address-meta {
