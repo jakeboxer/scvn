@@ -53,7 +53,7 @@ function setupAutoSelect (autoSelectClass) {
 }
 
 function setupAutoComplete (autoCompleteId) {
-	$('#' + autoCompleteId).autocomplete("dog cat bus".split(" "), {
+	$('#' + autoCompleteId).autocomplete("/unshortened/tags/namesearch", {
 		multiple: true
 	});
 }
