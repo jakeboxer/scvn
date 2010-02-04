@@ -1,7 +1,19 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-one:
-  address_id: 1
+scvngr_one:
+  address: scvngr
 
-two:
-  address_id: 1
+scvngr_two:
+  address: scvngr
+
+scvngr_three:
+  address: scvngr
+
+scvngr_four:
+  address: scvngr
+
+jboxer_one:
+  address: jboxer
+
+jboxer_two:
+  address: jboxer

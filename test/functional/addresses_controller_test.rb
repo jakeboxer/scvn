@@ -15,23 +15,23 @@ class AddressesControllerTest < ActionController::TestCase
   end
 
   test "should show address" do
-    get :show, :id  => addresses(:scvngr).shortened
+    get :show, :id  => addresses(:scvngr).to_param
     assert_response :success
   end
 
   test "should get edit" do
-    get :edit, :id  => addresses(:scvngr).shortened
+    get :edit, :id  => addresses(:scvngr).to_param
     assert_response :success
   end
 
   test "should update address" do
-    put :update, :id  => addresses(:scvngr).shortened,
+    put :update, :id  => addresses(:scvngr).to_param,
       :address => { :url => 'http://irrelevant.com' }
     assert_redirected_to assigns(:address)
   end
   
   test "should redirect to address's url" do
-    get :goto, :id => addresses(:scvngr).shortened
+    get :goto, :id => addresses(:scvngr).to_param
     assert_redirected_to addresses(:scvngr).url
   end
   
@@ -77,5 +77,11 @@ class AddressesControllerTest < ActionController::TestCase
     post :create, :address => { :url => 'irrelevant' }
     assert_response :success
     assert !assigns(:address).errors.empty?
+  end
+  
+  test "should add a new visit upon hitting a shortened url" do
+    assert_difference 'addresses(:scvngr).num_visits', 1 do
+      get :goto, :id => addresses(:scvngr).to_param
+    end
   end
 end
