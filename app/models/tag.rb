@@ -6,7 +6,7 @@ class Tag < ActiveRecord::Base
   # A tag name must be at least one character long and contain no commas or pipe
   # characters (pipe characters conflict with the jQuery autocomplete plugin)
   validates_format_of :name, :with => /\A[^,|]+\Z/
-  validates_uniqueness_of :name
+  validates_uniqueness_of :name, :case_sensitive => false
   
   attr_accessible :name
 end
