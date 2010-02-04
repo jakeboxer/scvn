@@ -2,6 +2,7 @@ Requirements
 ============
 * Tested on Ruby 1.9.1 with Ruby on Rails 2.3.3. May work with other versions,
   but no guarantees.
+* Tested on OS X 10.6.2.
 * Requires no external gems (aside from mysql).
 * Requires an internet connection for downloading Google's copy of jQuery.
 * Requires MySQL to be installed. Expects the following settings:
@@ -9,6 +10,19 @@ Requirements
   - host: localhost
   If you'd like to use different settings, or you're using a username and
   password, you'll need to go into /config/database.yml and change the settings
+
+Setup
+=====
+1. Create a new MySQL database called scvn_dev (or whatever you want, but if 
+   it's anything else, you'll need to change the settings in 
+   /config/database.yml)
+
+2. In a terminal, cd to the root of the Rails app and run `rake db:migrate`.
+
+3. Once the migration is complete, run `script/server` (also from the root of
+   the Rails app).
+
+4. In a browser, navigate to http://localhost:3000/ to begin.
 
 Abstract Design
 ===============
