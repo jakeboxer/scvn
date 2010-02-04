@@ -21,8 +21,9 @@
     <% else %>
       none (<%= link_to 'add some', edit_address_path(@address) %>)
     <% end %>
-    
   </li>
 </ul>
+
+<p>So far, <%= pluralize @address.num_visits, 'person', 'people' %> have used your sick new link. Why not <%= link_to 'tweet it', twitter_url(@address) %> or put it on Facebook?</p>
 
 <%= link_to 'Shorten another URL?', root_path %>
