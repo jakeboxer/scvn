@@ -26,8 +26,11 @@
   </div>
   
   <div class="grid_16" id="content">
+    <% if flash[:warning] %>
+			<p id="flash-warning"><%=h flash[:warning] %></p>
+		<% end %>
     <% if flash[:notice] %>
-			<p id="flash-notice"><%= flash[:notice] %></p>
+			<p id="flash-notice"><%=h flash[:notice] %></p>
 		<% end %>
     <%= yield %>
   </div>

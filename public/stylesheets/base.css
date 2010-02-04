@@ -27,7 +27,8 @@ label {
 
 /* Rails notices */
 
-#errorExplanation {
+#errorExplanation,
+#flash-warning {
 	background-color: #fbb;
 	padding: 16px 24px;
 }
