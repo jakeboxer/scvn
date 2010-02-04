@@ -11,7 +11,10 @@ class AddressRoutesTest < ActionController::IntegrationTest
   end
   
   test "GET /:shortened" do
-    get "/#{addresses(:scvngr).shortened}"
+    assert_difference "addresses(:scvngr).num_visits", 1 do
+      get "/#{addresses(:scvngr).shortened}"
+    end
+    
     assert_redirected_to addresses(:scvngr).url
   end
   
