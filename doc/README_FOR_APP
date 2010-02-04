@@ -10,3 +10,29 @@ Requirements
   If you'd like to use different settings, or you're using a username and
   password, you'll need to go into /config/database.yml and change the settings
 
+Abstract Design
+===============
+Though we're used to representing numbers in base-10, a numerical value can be represented in any base. Furthermore, the actual characters used to represent numbers are arbitrary. In hexadecimal, we use 'a' or 'A' to represent what would be '10' in decimal. It's equally reasonable to represent single base-10 digits (0-9) as other characters. As long as all involved parties are competent and aware, any representation will do.
+
+Since there are advantages to representing a number in as few characters as possible, scvn.gr represents the unique IDs of its stored web addresses in base-70 (the number of URL-safe characters). The order of the representation is kept consistent with the order of the ASCII table; '!' (the first URL-safe character) represents 0, and 'z' (the last URL-safe character) represents 69.
+
+When scvn.gr receives a URL submission, it defers to the database to assign it a regular numeric ID, then converts this ID to the previously-described pseudo-base-70 representation and gives it to the user. When scvn.gr receives a request with a pseudo-base-70 number, it converts it to a numeric value, then finds the matching URL submission.
+
+This method allows scvn.gr to avoid doing a text search on every request. The speed gains made from doing primary-key integer lookups (as well as the space saved by not storing the text representation and an index) are well worth the cost of translating from pseudo-base-70 to a numeric value. Furthermore, if we ever decide to change our conversion scheme (perhaps another character will be made illegal in URLs), we can update the system without altering every entry in the database.
+
+Design
+======
+The user submits the URL she would like shortened. It is saved as an instance of the Address model, and the shortened URL (calculated as described in Abstract Design) is shown.
+
+Optionally, the user may enter a list of comma-and-whitespace-separated tags while submitting the URL. Each of these tags are tokenized and saved as an instance of the Tag model. A tag gives meaning to an Address; a user looking to laugh may see an Address tagged "funny" and go to it. Tags and Addresses have a many-to-many relationship, so a user can see which Tags an individual Address has, or which Addresses have an individual Tag.
+
+Tags and Addresses are related through the Tagging model. A Tagging keeps track of when it was created, so in the future, it could be used to identify trends ("On an average day, 0.001% of all Addresses get the `pirates` tag, but on September 19 2009, it ballooned to 2%! Wow!").
+
+When someone uses a scvn.gr-shortened URL, it's recorded by saving an instance of the Visit model (which is linked to the Address that was visited). This can be used to keep a basic counter for a URL. The Visit model also keeps track of when it was created, meaning it could also be used for trends. In the future, visitor-specific information (IP address, browser, etc.) could be saved in the Visit model, but I prefer to avoid potential privacy lawsuits in my mini coding projects.
+
+Testing Process
+===============
+At least one unit test was written for every non-trivial model method.
+At least one functional test was written for every controller method.
+One integration test was written to cover each obvious use case. Then, as exceptions occurred, more integration tests were written in order to duplicate those exceptions and avoid regressions.
+At the time of this writing, all unit, functional, and integration tests pass.
