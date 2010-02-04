@@ -13,7 +13,8 @@ class TagsController < ApplicationController
   end
   
   def find
-    @tag = Tag.find_by_name(params[:name])
+    @tag_name = params[:name]
+    @tag      = Tag.find_by_name(@tag_name)
     
     respond_to do |format|
       if @tag.nil?
