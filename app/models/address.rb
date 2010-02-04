@@ -141,12 +141,20 @@ class Address < ActiveRecord::Base
   def assign_tags
     if @tag_names
       # Split our tag name string on commas surrounded by any amount of
-      # whitespace and eliminate any tags that are either empty or made up 
-      # entirely of whitespace
-      cleaned   = @tag_names.split(/\s*,\s*/).select {|name| name =~ /[^\s]/ }
-      self.tags = cleaned.collect do |name|
+      # whitespace
+      names_coll = @tag_names.split(/\s*,\s*/)
+      self.tags = Address.clean_tag_names(names_coll).collect do |name|
         Tag.find_or_create_by_name(name.downcase)
       end
     end
+  end
+  
+  # Clean up the tag names
+  def self.clean_tag_names (names_coll)
+    # Eliminate any tags that are either empty or made up entirely of whitespace
+    cleaned = names_coll.select {|name| name =~ /[^\s]/ }
+    
+    # Eliminate any duplicates
+    cleaned.uniq
   end
 end
