@@ -35,6 +35,15 @@ label {
 	background: transparent url(../images/logo.jpg) 0 0 no-repeat;
 }
 
+/* Find Tags */
+#find-tags-form {
+	text-align: right;
+}
+
+#find-tags-form input {
+	padding: 4px;
+}
+
 /* New Address */
 #new_address input[type="text"] {
 	width: 920px;

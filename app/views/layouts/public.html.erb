@@ -14,7 +14,15 @@
     <div class="grid_4 alpha" id="logo">
       <%= link_to 'scvn.gr', root_path %>
     </div>
-    <div class="grid_12 spacer omega"></div>
+    <div class="grid_12 omega">
+      <% form_tag find_tags_path,
+        :method => :get, :id => 'find-tags-form' do -%>
+        <%= text_field_tag :name, nil, {
+          :title => 'Search for a tag...',
+          :class => 'has-hint',
+          :id    => 'find-tag' } %>
+      <% end %>
+    </div>
   </div>
   
   <div class="grid_16" id="content">
