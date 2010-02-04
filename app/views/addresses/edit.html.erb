@@ -6,9 +6,6 @@
   <%= render :partial => 'form', :object => f %>
   
   <p>
-    <%= f.submit 'Update' %>
+    <%= f.submit 'Save' %> or <%= link_to 'go back', @address %>
   </p>
 <% end %>
-
-<%= link_to 'Show', @address %> |
-<%= link_to 'Back', addresses_path %>
