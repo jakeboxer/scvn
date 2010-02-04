@@ -7,6 +7,12 @@ class TagsControllerTest < ActionController::TestCase
     assert_equal    tags(:tech), assigns(:tag)
   end
   
+  test "should redirect to root on an invalid tag id" do
+    get :show, :id => 'irrelevant'
+    assert_redirected_to root_path
+    assert_equal         "irrelevant isn't a valid tag id.", flash[:warning]
+  end
+  
   test "should get tag names" do
     get :namesearch, :q => 'g'
     assert_response :success

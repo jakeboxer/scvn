@@ -2,7 +2,12 @@ class TagsController < ApplicationController
   
   # GET /unshortened/tags/1
   def show
-    @tag = Tag.find(params[:id])
+    begin
+      @tag = Tag.find(params[:id])
+    rescue ActiveRecord::RecordNotFound => e
+      flash[:warning] = "#{params[:id]} isn't a valid tag id."
+      redirect_to root_path
+    end
   end
   
   # Search for a tag by name. Redirects to tag's show view if found, shows `not
