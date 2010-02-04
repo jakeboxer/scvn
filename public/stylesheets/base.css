@@ -25,7 +25,8 @@ label {
 	font-size: 85%;
 }
 
-/* Rails errors */
+/* Rails notices */
+
 #errorExplanation {
 	background-color: #fbb;
 	padding: 16px 24px;
@@ -38,6 +39,11 @@ label {
 
 #errorExplanation li {
 	margin: 0;
+}
+
+#flash-notice {
+	background-color: #bfb;
+	padding: 16px 24px;
 }
 
 /* Structure */

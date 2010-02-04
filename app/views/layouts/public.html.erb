@@ -26,6 +26,9 @@
   </div>
   
   <div class="grid_16" id="content">
+    <% if flash[:notice] %>
+			<p id="flash-notice"><%= flash[:notice] %></p>
+		<% end %>
     <%= yield %>
   </div>
 </div>
