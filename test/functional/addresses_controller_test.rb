@@ -35,9 +35,10 @@ class AddressesControllerTest < ActionController::TestCase
     assert_redirected_to addresses(:scvngr).url
   end
   
-  test "should 404" do
+  test "should redirect to root on an invalid shortened id" do
     get :goto, :id => 'irr'
-    assert_response :missing
+    assert_redirected_to root_path
+    assert_equal         "irr isn't a valid URL code (yet).", flash[:warning]
   end
   
   test "should create address with two new tags" do

@@ -47,6 +47,11 @@ class AddressesController < ApplicationController
   private
   
   def get_address
-    @address = Address.find_by_shortened(params[:id])
+    begin
+      @address = Address.find_by_shortened(params[:id])
+    rescue ActiveRecord::RecordNotFound => e
+      flash[:warning] = "#{params[:id]} isn't a valid URL code (yet)."
+      redirect_to root_path
+    end
   end
 end
