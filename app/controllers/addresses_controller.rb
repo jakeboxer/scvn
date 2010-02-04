@@ -1,21 +1,20 @@
 class AddressesController < ApplicationController
   before_filter :get_address, :only => [:show, :edit, :update, :goto]
 
-  # GET /addresses/1
+  # GET /unshortened/addresses/xyz
   def show
   end
 
-  # GET /addresses/new
+  # GET /unshortened/addresses/new
   def new
     @address = Address.new
   end
 
-  # GET /addresses/1/edit
+  # GET /unshortened/addresses/xyz/edit
   def edit
   end
 
-  # POST /addresses
-  # POST /addresses.xml
+  # POST /unshortened/addresses
   def create
     @address = Address.new(params[:address])
     
@@ -27,8 +26,7 @@ class AddressesController < ApplicationController
     end
   end
 
-  # PUT /addresses/1
-  # PUT /addresses/1.xml
+  # PUT /unshortened/addresses/xyz
   def update
     if @address.update_attributes(params[:address])
       flash[:notice] = 'Address was successfully updated.'
@@ -38,7 +36,9 @@ class AddressesController < ApplicationController
     end
   end
   
-  # GET /addresses/1/goto
+  # Redirects to the address's URL and records a visitor
+  # GET /unshortened/addresses/xyz/goto
+  # GET /xyz
   def goto
     @address.visits.create
     redirect_to @address.url
