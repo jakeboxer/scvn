@@ -1,7 +1,7 @@
 <p id="shortened-address-container">
   <%= label_tag 'Your shortened URL is' %>
   <%= text_field_tag 'shortened', goto_shortened_url(@address), 
-    :class=> 'has-autoselect' %>
+    :class => 'has-autoselect' %>
 </p>
 
 <ul id="address-meta">
@@ -13,7 +13,9 @@
   <li>
     <strong>Tags:</strong>
     <% if not @address.tags.empty? %>
-      <%=h @address.tag_names %>
+      <% @address.tags.each do |tag| %>
+        <%= link_to tag.name, tag %><% unless tag == @address.tags.last %>,<% end %>
+      <% end %>
       (<%= link_to 'edit', edit_address_path(@address) %>)
     <% else %>
       none (<%= link_to 'add some', edit_address_path(@address) %>)
