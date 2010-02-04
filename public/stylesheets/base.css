@@ -122,3 +122,16 @@ label {
 #address-meta li {
 	margin: 0;
 }
+
+/* Tagged Addresses */
+#tagged-addresses {
+	list-style-type: none;
+	width: 470px;
+	border-bottom: 1px solid #ccc;
+}
+
+#tagged-addresses li {
+	margin-left: 0;
+	padding: 8px 0;
+	border-top: 1px solid #ccc;
+}
