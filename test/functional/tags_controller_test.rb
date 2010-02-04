@@ -23,4 +23,9 @@ class TagsControllerTest < ActionController::TestCase
     get :find, :name => tags(:tech).name
     assert_redirected_to tags(:tech)
   end
+  
+  test "shouldn't find tag" do
+    get :find, :name => 'irrelevant'
+    assert_response :success
+  end
 end
