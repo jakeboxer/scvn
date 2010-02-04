@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100203234052) do
+ActiveRecord::Schema.define(:version => 20100204035730) do
 
   create_table "addresses", :force => true do |t|
     t.text     "url",        :null => false
@@ -32,6 +32,6 @@ ActiveRecord::Schema.define(:version => 20100203234052) do
     t.datetime "updated_at"
   end
 
-  add_index "tags", ["name"], :name => "index_tags_on_name"
+  add_index "tags", ["name"], :name => "tag_name_unique_index", :unique => true
 
 end
