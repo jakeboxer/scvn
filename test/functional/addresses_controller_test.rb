@@ -52,4 +52,30 @@ class AddressesControllerTest < ActionController::TestCase
     
     assert_redirected_to assigns(:address)
   end
+  
+  test "should error on pipe character in tag names" do
+    post :create, :address => { :url => 'http://irrelevant.com',
+      :tag_names => 'irr, e||evant'}
+    
+    assert_response :success
+    assert !assigns(:address).errors.empty?
+  end
+  
+  test "should error on missing URLs " do
+    post :create, :address => {}
+    assert_response :success
+    assert !assigns(:address).errors.empty?
+  end
+  
+  test "should error on blank URLs " do
+    post :create, :address => { :url => '' }
+    assert_response :success
+    assert !assigns(:address).errors.empty?
+  end
+  
+  test "should error on invalid URLs " do
+    post :create, :address => { :url => 'irrelevant' }
+    assert_response :success
+    assert !assigns(:address).errors.empty?
+  end
 end
