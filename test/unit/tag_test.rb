@@ -14,4 +14,19 @@ class TagTest < ActiveSupport::TestCase
     assert !tags(:blog).addresses.exists?(addresses(:scvngr))
     assert tags(:blog).addresses.exists?(addresses(:jboxer))
   end
+  
+  test "tag names are unique" do
+    new_tag = Tag.new(:name => tags(:tech).name)
+    assert !new_tag.save
+  end
+  
+  test "tag name uniqueness is case-insensitive" do
+    # A fully-lowercased version shouldn't save
+    new_tag = Tag.new(:name => tags(:tech).name.downcase)
+    assert !new_tag.save
+    
+    # Neither should a fully-uppercased version
+    new_tag = Tag.new(:name => tags(:tech).name.upcase)
+    assert !new_tag.save
+  end
 end
