@@ -52,7 +52,14 @@ function setupAutoSelect (autoSelectClass) {
 	});
 }
 
+function setupAutoComplete (autoCompleteId) {
+	$('#' + autoCompleteId).autocomplete("dog cat bus".split(" "), {
+		multiple: true
+	});
+}
+
 $(document).ready(function () {
 	setupHints('has-hint', 'show-hint');
 	setupAutoSelect('has-autoselect');
+	setupAutoComplete('address_tag_names');
 });

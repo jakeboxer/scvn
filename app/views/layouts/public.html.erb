@@ -5,8 +5,8 @@
 <head>
 	<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 	<title><%= controller.controller_name %>: <%= controller.action_name %></title>
-	<%= stylesheet_link_tag 'reset', 'text', '960', 'base' %>
-	<%= javascript_include_tag 'http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js', 'application' %>
+	<%= stylesheet_link_tag 'reset', 'text', '960', 'jquery.autocomplete', 'thickbox', 'base' %>
+	<%= javascript_include_tag 'http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js', 'jquery.bgiframe.min', 'jquery.ajaxQueue', 'thickbox-compressed', 'jquery.autocomplete.min', 'application' %>
 </head>
 <body id="<%= request.path_parameters['controller'] %>">
 <div class="container_16">
