@@ -2,6 +2,9 @@ ActionController::Routing::Routes.draw do |map|
   # Prefix all the unshortened urls with /unshortened
   map.with_options :path_prefix => :unshortened do |unshortened|
     unshortened.resources :addresses, :member => { :goto => :get }
+    unshortened.resources :tags,
+      :only => [:index, :show],
+      :collection => { :namesearch => :get }
   end
   
   # The priority is based upon order of creation: first created -> highest priority.
