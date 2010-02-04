@@ -30,6 +30,11 @@ class Address < ActiveRecord::Base
   validates_format_of :url,
     :with => /\A(http|https|ftp):\/\/[-_\w]+(\.[-_\w]+)+([-,@?^=%&:~#\/\+\w\.]*[-@?^=%&~#\/\w])?\Z/
   
+  # The string of tag names can have any character except for a pipe (which
+  # conflicts with the jQuery autocomplete plugin)
+  validates_format_of :tag_names, :with => /\A[^|]*\Z/,
+    :message => "Tags may not contain the | (pipe) character."
+  
   # Callbacks
   after_save :assign_tags
   
