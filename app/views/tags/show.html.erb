@@ -4,12 +4,8 @@
   <%= pluralize @tag.addresses.size, 'URL' %> tagged '<%=h @tag.name %>'
 </h1>
 
-<ul>
+<ul id="tagged-addresses">
 <% @tag.addresses.each do |address| %>
-  <li>
-    <%= link_to goto_shortened_url(address), goto_shortened_url(address) %>
-    (<%= link_to 'stats', address %>,
-    <%= link_to 'edit', edit_address_path(address) %>)
-  </li>
+  <%= render :partial => 'tagged_address', :object => address %>
 <% end %>
 </ul>
