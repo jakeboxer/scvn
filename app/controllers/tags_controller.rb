@@ -7,13 +7,7 @@ class TagsController < ApplicationController
     @tag_name = params[:name]
     @tag      = Tag.find_by_name(@tag_name)
     
-    respond_to do |format|
-      if @tag.nil?
-        format.html
-      else
-        format.html { redirect_to @tag }
-      end
-    end
+    redirect_to @tag unless @tag.nil?
   end
   
   def namesearch
