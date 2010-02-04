@@ -3,7 +3,9 @@
 <h1>Edit URL</h1>
 
 <% form_for(@address) do |f| %>
-  <%= f.error_messages %>
+  <%= f.error_messages \
+    :header_message => "Oops! Something's wrong with your submission.",
+    :message        => '' %>
   
   <%= render :partial => 'form', :object => f %>
   
