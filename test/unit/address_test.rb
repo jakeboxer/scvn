@@ -59,4 +59,14 @@ class AddressTest < ActiveSupport::TestCase
     assert       addr.tags.exists?(Tag.find_by_name('ly'))
     assert_equal 4, addr.tags.size
   end
+  
+  test 'update tags with mixed-case names' do
+    tags = 'iRr, EL, EvAnT'
+    addr = Address.create(:url => 'http://irrelevant.com', :tag_names => tags)
+    
+    assert       addr.tags.exists?(Tag.find_by_name('irr'))
+    assert       addr.tags.exists?(Tag.find_by_name('el'))
+    assert       addr.tags.exists?(Tag.find_by_name('evant'))
+    assert_equal 3, addr.tags.size
+  end
 end
