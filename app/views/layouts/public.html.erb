@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 	<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-	<title><%= controller.controller_name %>: <%= controller.action_name %></title>
+	<title>scvn.gr | <%=h yield(:title) %></title>
 	<%= stylesheet_link_tag 'reset', 'text', '960', 'jquery.autocomplete', 'thickbox', 'base' %>
 	<%= javascript_include_tag 'http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js', 'jquery.bgiframe.min', 'jquery.ajaxQueue', 'thickbox-compressed', 'jquery.autocomplete.min', 'application' %>
 </head>
