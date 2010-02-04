@@ -3,7 +3,7 @@ ActionController::Routing::Routes.draw do |map|
   map.with_options :path_prefix => :unshortened do |unshortened|
     unshortened.resources :addresses, :member => { :goto => :get }
     unshortened.resources :tags,
-      :only => [:index, :show],
+      :only       => [:show],
       :collection => { :namesearch => :get, :find => :get }
   end
   
