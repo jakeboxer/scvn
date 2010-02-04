@@ -13,9 +13,14 @@ class TagsControllerTest < ActionController::TestCase
     assert_equal    tags(:tech), assigns(:tag)
   end
   
-  test "should find tags" do
+  test "should get tag names" do
     get :namesearch, :q => 'g'
     assert_response :success
     assert !assigns(:tags).empty?
+  end
+  
+  test "should find tag" do
+    get :find, :name => tags(:tech).name
+    assert_redirected_to tags(:tech)
   end
 end
