@@ -24,6 +24,6 @@
   </li>
 </ul>
 
-<p>So far, <%= pluralize @address.num_visits, 'person', 'people' %> have used your sick new link. Why not <%= link_to 'tweet it', twitter_url(@address) %> or put it on Facebook?</p>
+<p>So far, <strong><%= pluralize @address.num_visits, 'person', 'people' %></strong> have used your sick new link. Why not <%= link_to 'tweet it', twitter_url(@address) %> or put it on Facebook to get more hits?</p>
 
 <%= link_to 'Shorten another URL?', root_path %>
