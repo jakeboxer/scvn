@@ -35,6 +35,11 @@ class AddressesControllerTest < ActionController::TestCase
     assert_redirected_to addresses(:scvngr).url
   end
   
+  test "should 404" do
+    get :goto, :id => 'irr'
+    assert_response :missing
+  end
+  
   test "should create address with two new tags" do
     assert_difference 'Tag.count', 2 do
       post :create, :address => { :url => 'http://irrelevant.com',
