@@ -70,6 +70,16 @@ class AddressTest < ActiveSupport::TestCase
     assert_equal 3, addr.tags.size
   end
   
+  test 'update tags and eliminate duplicates' do
+    tags = 'irr, irr, irr, el, evant, el, evant, irr'
+    addr = Address.create(:url => 'http://irrelevant.com', :tag_names => tags)
+    
+    assert       addr.tags.exists?(Tag.find_by_name('irr'))
+    assert       addr.tags.exists?(Tag.find_by_name('el'))
+    assert       addr.tags.exists?(Tag.find_by_name('evant'))
+    assert_equal 3, addr.tags.size
+  end
+  
   test 'number of visits' do
     assert_equal 4, addresses(:scvngr).num_visits
     assert_equal 2, addresses(:jboxer).num_visits

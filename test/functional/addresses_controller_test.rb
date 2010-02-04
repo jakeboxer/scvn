@@ -59,6 +59,15 @@ class AddressesControllerTest < ActionController::TestCase
     assert_redirected_to assigns(:address)
   end
   
+  test "should create address and eliminate duplicate tags" do
+    assert_difference 'Tag.count', 3 do
+      post :create, :address => { :url => 'http://irrelevant.com',
+        :tag_names => 'irr, irr, irr, ele, vant, ele, vant, irr'}
+    end
+    
+    assert_redirected_to assigns(:address)
+  end
+  
   test "should error on pipe character in tag names" do
     post :create, :address => { :url => 'http://irrelevant.com',
       :tag_names => 'irr, e||evant'}
