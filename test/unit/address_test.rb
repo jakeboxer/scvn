@@ -71,7 +71,7 @@ class AddressTest < ActiveSupport::TestCase
   end
   
   test 'number of visits' do
-    assert_equals 4, addresses(:scvngr).num_visits
-    assert_equals 2, addresses(:jboxer).num_visits
+    assert_equal 4, addresses(:scvngr).num_visits
+    assert_equal 2, addresses(:jboxer).num_visits
   end
 end
