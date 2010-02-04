@@ -19,7 +19,7 @@ class AddressesController < ApplicationController
     @address = Address.new(params[:address])
     
     if @address.save
-      flash[:notice] = 'Address was successfully created.'
+      flash[:notice] = 'Your long URL has been shortened!'
       redirect_to @address
     else
       render :action => :new
@@ -29,7 +29,7 @@ class AddressesController < ApplicationController
   # PUT /unshortened/addresses/xyz
   def update
     if @address.update_attributes(params[:address])
-      flash[:notice] = 'Address was successfully updated.'
+      flash[:notice] = 'Update successful!'
       redirect_to @address
     else
       render :action => "edit"
