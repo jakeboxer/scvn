@@ -49,31 +49,37 @@ label {
 	padding: 4px;
 }
 
-/* New Address */
-#new_address input[type="text"] {
+/* New/Edit Address */
+#new_address input[type="text"],
+.edit_address input[type="text"] {
 	width: 920px;
 }
 
-#new_address #address_url {
+#new_address #address_url,
+.edit_address #address_url {
 	font-size: 120%;
 	padding: 8px;
 }
 
-#new_address #address_url_label {
+#new_address #address_url_label,
+.edit_address #address_url_label {
 	font-size: 160%;
 	font-weight: bold;
 }
 
-#new_address #address_tag_names {
+#new_address #address_tag_names,
+.edit_address #address_tag_names {
 	font-size: 90%;
 	padding: 8px;
 }
 
-#new_address #address_submit {
+#new_address #address_submit,
+.edit_address #address_submit {
 	font-size: 140%;
 	font-weight: bold;
 	padding: 16px;
 }
+
 
 /* Shortened Address */
 #shortened-address-container {
