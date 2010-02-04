@@ -1,4 +1,4 @@
-# Used to mark an Address with different meanings of items of interest.
+# Used to mark an Address with different meanings and/or items of interest.
 class Tag < ActiveRecord::Base
   has_many :taggings, :dependent => :destroy
   has_many :addresses, :through => :taggings
